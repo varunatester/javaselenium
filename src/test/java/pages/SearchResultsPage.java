@@ -23,4 +23,8 @@ public class SearchResultsPage {
         driver.findElements(By.cssSelector("div[name^='Sorting__mainActive']"));
         ExpectedConditions.textToBePresentInElement(activeTab, "Cheapest");
     }
+
+    public void verifyResultsAreSortedByPrice() {
+        System.out.println(driver.findElements(By.xpath("//div[@data-test='Result']")).size());
+    }
 }

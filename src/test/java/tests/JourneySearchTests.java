@@ -17,5 +17,6 @@ public class JourneySearchTests extends BaseTest {
         JourneyDetails journeyDetails = new JourneyDetailsBuilder().isOneWay(true).build();
         searchResultsPage = homePage.searchForAOneWayJourneyWith(journeyDetails);
         searchResultsPage.verifyCheapestIsSelected();
+        searchResultsPage.verifyResultsAreSortedByPrice();
     }
 }
