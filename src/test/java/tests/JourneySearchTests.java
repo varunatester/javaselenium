@@ -14,7 +14,7 @@ public class JourneySearchTests extends BaseTest {
 
     @Test(groups = Categories.SANITY)
     public void verifySearchResultsSortedByPriceForSingleJourney() throws InterruptedException {
-        JourneyDetails journeyDetails = new JourneyDetailsBuilder().isOneWay(true).build();
+        JourneyDetails journeyDetails = new JourneyDetailsBuilder().isOneWay(true).originAs("Berlin").destinationAs("Prague").build();
         searchResultsPage = homePage.searchForAOneWayJourneyWith(journeyDetails);
         searchResultsPage.verifyCheapestIsSelected();
         searchResultsPage.verifySearchResultsAreSortedByPrice();

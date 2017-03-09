@@ -1,5 +1,6 @@
 package domain;
 
+import utils.Constants;
 import utils.DateUtil;
 
 public class JourneyDetailsBuilder {
@@ -27,7 +28,7 @@ public class JourneyDetailsBuilder {
     public JourneyDetailsBuilder() {
         journeyDetails = new JourneyDetails();
         journeyDetails.setIsOneWayJourney(true);
-        journeyDetails.setOrigin("Berlin");
+        journeyDetails.setOrigin(Constants.OriginCity);
         journeyDetails.setDestination("Prague");
         journeyDetails.setDepartureDate(new DateUtil().tomorrow());
         journeyDetails.setNumberOfAdults(1);
@@ -36,4 +37,13 @@ public class JourneyDetailsBuilder {
     }
 
 
+    public JourneyDetailsBuilder originAs(String originCity) {
+        this.origin=originCity;
+        return this;
+    }
+
+    public JourneyDetailsBuilder destinationAs(String destinationCity) {
+        this.destination=destinationCity;
+        return this;
+    }
 }

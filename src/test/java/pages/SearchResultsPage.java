@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class SearchResultsPage {
 
 
     public void verifyCheapestIsSelected() throws InterruptedException {
-        ExpectedConditions.textToBePresentInElement(activeTab, "Cheapest");
+        ExpectedConditions.textToBePresentInElement(activeTab, Constants.CHEAPEST);
     }
 
     public void verifySearchResultsAreSortedByPrice() throws InterruptedException {
