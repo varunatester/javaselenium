@@ -32,6 +32,7 @@ public class HomePage {
     }
 
     public SearchResultsPage searchForAOneWayJourneyWith(JourneyDetails journeyDetails) throws InterruptedException {
+        driver.findElement(By.className("sb-checkbox")).click();
         this.enterOriginAs(journeyDetails.getOrigin());
         this.enterDestinationAs(journeyDetails.getDestination());
         searchResultsPage = this.searchForTheJourney();
