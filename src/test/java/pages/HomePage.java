@@ -41,13 +41,13 @@ public class HomePage {
 
     public void enterOriginAs(String originCity) throws InterruptedException {
         departureCity.click();
-        departureCity.findElement(By.id("$city")).sendKeys(originCity);
+        departureCity.findElement(By.id("departureCity")).sendKeys(originCity);
         selectTheFirstAvailableAutoCompleteOption(".departure.row-input");
     }
 
     public void enterDestinationAs(String destinationCity) throws InterruptedException {
         arrivalCity.click();
-        arrivalCity.findElement(By.id("$city")).sendKeys(destinationCity);
+        arrivalCity.findElement(By.id("arrivalCity")).sendKeys(destinationCity);
         selectTheFirstAvailableAutoCompleteOption(".arrival.row-input");
     }
 

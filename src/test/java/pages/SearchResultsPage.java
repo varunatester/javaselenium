@@ -25,6 +25,7 @@ public class SearchResultsPage {
     }
 
     public void verifyResultsAreSortedByPrice() {
-        System.out.println(driver.findElements(By.xpath("//div[@data-test='Result']")).size());
+
+        System.out.println(driver.findElements(By.className("Result__result___Sfwee")).size());
     }
 }
