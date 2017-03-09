@@ -34,15 +34,16 @@ public class SearchResultsPage {
     }
 
     public void verifySearchResultsAreSortedByPrice() throws InterruptedException {
-        WebElement originOptionsElement = new PageOperations(driver).waitForElementUntil(resultsBody);
-        List<WebElement> result__resultPrice___2q7ba = originOptionsElement.findElements(resultPriceList);
-        List<Double> priceValue = getResultPriceValue(result__resultPrice___2q7ba);
+        WebElement resultBodyElement = new PageOperations(driver).waitForElementUntil(resultsBody);
+        List<WebElement> resultPriceElement = resultBodyElement.findElements(resultPriceList);
+        List<Double> priceValue = getResultPriceValue(resultPriceElement);
         assertTrue(verifyIsSortedBy(priceValue));
     }
 
     private List<Double> getResultPriceValue(List<WebElement> result__resultPrice___2q7ba) {
         List<Double> list = new ArrayList<>();
         for (WebElement webElement : result__resultPrice___2q7ba) {
+            driver.findElement(resultPriceFraction);
             String resultPriceFractionValue = webElement.findElement(resultPriceFraction).getText();
             String resultPriceValue = webElement.findElement(resultPrice).getText();
             String resultPriceSepartorValue = webElement.findElement(resultPriceSeparator).getText();

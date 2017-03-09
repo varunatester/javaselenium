@@ -27,12 +27,21 @@ public class HomePage {
     @FindBy(id = "dLsbSubmit")
     private WebElement submit;
 
+    @FindBy(className = "sb-checkbox")
+    private WebElement bookingCheckbox;
+
+    @FindBy(id="departureCity")
+    private WebElement departureCityInput;
+
+    @FindBy(id="arrivalCity")
+    private WebElement arrivalCityInput;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public SearchResultsPage searchForAOneWayJourneyWith(JourneyDetails journeyDetails) throws InterruptedException {
-        driver.findElement(By.className("sb-checkbox")).click();
+        bookingCheckbox.click();
         this.enterOriginAs(journeyDetails.getOrigin());
         this.enterDestinationAs(journeyDetails.getDestination());
         searchResultsPage = this.searchForTheJourney();
@@ -42,13 +51,13 @@ public class HomePage {
 
     public void enterOriginAs(String originCity) throws InterruptedException {
         departureCity.click();
-        departureCity.findElement(By.id("departureCity")).sendKeys(originCity);
+        departureCityInput.sendKeys(originCity);
         selectTheFirstAvailableAutoCompleteOption(".departure.row-input");
     }
 
     public void enterDestinationAs(String destinationCity) throws InterruptedException {
         arrivalCity.click();
-        arrivalCity.findElement(By.id("arrivalCity")).sendKeys(destinationCity);
+        arrivalCityInput.sendKeys(destinationCity);
         selectTheFirstAvailableAutoCompleteOption(".arrival.row-input");
     }
 
@@ -60,8 +69,7 @@ public class HomePage {
     public void selectTheFirstAvailableAutoCompleteOption(String autoCompleteScroll) throws InterruptedException {
         WebElement originOptionsElement = new PageOperations(driver).waitForElementUntil(By.cssSelector(autoCompleteScroll));
         Thread.sleep(600);
-        List<WebElement> optionListElement = originOptionsElement.findElements(By.tagName("li"));
-        optionListElement.get(0).click();
+        originOptionsElement.findElements(By.tagName("li")).get(0).click();
     }
 }
 
