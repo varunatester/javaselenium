@@ -1,5 +1,6 @@
 package pages;
 
+import com.google.common.collect.Ordering;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,29 +39,17 @@ public class SearchResultsPage {
         WebElement resultBodyElement = new PageOperations(driver).waitForElementUntil(resultsBody);
         List<WebElement> resultPriceElement = resultBodyElement.findElements(resultPriceList);
         List<Double> priceValue = getResultPriceValue(resultPriceElement);
-        assertTrue(verifyIsSortedBy(priceValue));
+        assertTrue(Ordering.natural().isOrdered(priceValue), priceValue+Constants.listFailTextMessage);
     }
 
     private List<Double> getResultPriceValue(List<WebElement> result__resultPrice___2q7ba) {
         List<Double> list = new ArrayList<>();
         for (WebElement webElement : result__resultPrice___2q7ba) {
-            driver.findElement(resultPriceFraction);
             String resultPriceFractionValue = webElement.findElement(resultPriceFraction).getText();
             String resultPriceValue = webElement.findElement(resultPrice).getText();
             String resultPriceSepartorValue = webElement.findElement(resultPriceSeparator).getText();
             list.add(Double.valueOf(resultPriceValue + resultPriceSepartorValue + resultPriceFractionValue));
         }
         return list;
-    }
-
-    private boolean verifyIsSortedBy(List<Double> list) {
-        Boolean isSorted = true;
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i) > list.get(i + 1)) {
-                isSorted = false;
-                break;
-            }
-        }
-        return isSorted;
     }
 }
