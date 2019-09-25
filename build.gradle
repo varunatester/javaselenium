@@ -1,4 +1,4 @@
-group 'GoEuroTest'
+group 'PracticeJaveSelenium'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -21,6 +21,10 @@ task SanityTests(type: Test) {
         threadCount = 10
         useDefaultListeners = false
     }
+}
+test {
+    useTestNG()
+    scanForTestClasses = false //this one
 }
 
 dependencies {

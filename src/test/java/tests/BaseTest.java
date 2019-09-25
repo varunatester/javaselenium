@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import pages.SearchResultsPage;
 import utils.DriverFactory;
 import utils.PropertyReader;
 
@@ -24,6 +25,13 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void teardown(){
         new DriverFactory().destroyDriver();
+    }
+
+    private void launchApplicationUnderTest2() {
+        PropertyReader reader = new PropertyReader();
+        String applicationURL = reader.readProperty("applicationURL");
+        driver.get(applicationURL);
+        SearchResultsPage searchResultsPage = new HomePage(driver).searchForTheJourney();
     }
 
     private void launchApplicationUnderTest() {

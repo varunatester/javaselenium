@@ -27,7 +27,7 @@ public class JourneyDetailsBuilder {
 
     public JourneyDetailsBuilder() {
         journeyDetails = new JourneyDetails();
-        journeyDetails.setIsOneWayJourney(true);
+        journeyDetails.setOneWayJourney(true);
         journeyDetails.setOrigin(Constants.OriginCity);
         journeyDetails.setDestination("Prague");
         journeyDetails.setDepartureDate(new DateUtil().tomorrow());

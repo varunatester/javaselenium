@@ -15,17 +15,17 @@ public class HomePage {
     WebDriver driver;
     SearchResultsPage searchResultsPage;
 
-    @FindBy(css = ".departure.row-input")
-    private WebElement departureCity;
+    @FindBy(id = "nav-search")
+    private WebElement navBar;
 
-    @FindBy(css = ".arrival.row-input")
-    private WebElement arrivalCity;
+    @FindBy(css = ".twotabsearchtextbox")
+    private WebElement searchTextBox;
 
-    @FindBy(className = "sb-departureDate")
-    private WebElement departureDate;
+    @FindBy(className = "nav-input")
+    private WebElement submitText;
 
-    @FindBy(id = "dLsbSubmit")
-    private WebElement submit;
+    @FindBy(className = "nav-line-3")
+    private WebElement signIn;
 
     @FindBy(className = "sb-checkbox")
     private WebElement bookingCheckbox;
@@ -70,6 +70,10 @@ public class HomePage {
         WebElement originOptionsElement = new PageOperations(driver).waitForElementUntil(By.cssSelector(autoCompleteScroll));
         Thread.sleep(600);
         originOptionsElement.findElements(By.tagName("li")).get(0).click();
+    }
+    public void searchItem() {
+        submit.click();
+
     }
 }
 
