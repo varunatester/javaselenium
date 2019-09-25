@@ -1,6 +1,7 @@
 package tests;
 
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
@@ -31,7 +32,8 @@ public class BaseTest {
         PropertyReader reader = new PropertyReader();
         String applicationURL = reader.readProperty("applicationURL");
         driver.get(applicationURL);
-        SearchResultsPage searchResultsPage = new HomePage(driver).searchForTheJourney();
+
+        SearchResultsPage searchResultsPage = new HomePage(driver).searchItem();
     }
 
     private void launchApplicationUnderTest() {
@@ -39,5 +41,6 @@ public class BaseTest {
         String applicationURL = reader.readProperty("applicationURL");
         driver.get(applicationURL);
         homePage = PageFactory.initElements(driver, HomePage.class);
+
     }
 }
