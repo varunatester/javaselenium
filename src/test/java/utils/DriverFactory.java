@@ -4,17 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-
 public class DriverFactory {
 
-    protected static WebDriver driver;
-
+    private static WebDriver driver;
 
     public DriverFactory() {
         initialize();
     }
 
-    public void initialize() {
+    private void initialize() {
         if (driver == null)
             createNewDriverInstance();
     }
