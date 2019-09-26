@@ -11,10 +11,10 @@ public class HomePageBeforePageFactory {
     public HomePageBeforePageFactory(WebDriver driver) {
         this.driver = driver;
     }
-    public SearchResultsPage searchItem() {
+    public void searchItem() {
         driver.findElement(searchTextBox).sendKeys("Kindle");
         driver.findElement(submitText).click();
-        return searchResultsPage=new SearchResultsPage(driver);
+       //return searchResultsPage=new SearchResultsPage(driver,);
     }
 }
 

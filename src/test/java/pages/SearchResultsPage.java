@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import utils.Constants;
 
 import java.util.ArrayList;
@@ -14,12 +15,13 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 
-public class SearchResultsPage {
+public class SearchResultsPage extends LoadableComponent<SearchResultsPage>{
 
     WebDriver driver;
-
-    public SearchResultsPage(WebDriver driver) {
+    LoadableComponent<HomePage> parent;
+    public SearchResultsPage(WebDriver driver, LoadableComponent<HomePage> parent) {
         this.driver = driver;
+        this.parent=parent;
     }
 
     @FindBy(className = "Sorting__mainActive___3vu1G")
@@ -32,7 +34,7 @@ public class SearchResultsPage {
 
 
     public void verifyCheapestIsSelected() throws InterruptedException {
-        ExpectedConditions.textToBePresentInElement(activeTab, Constants.CHEAPEST);
+      System.out.println("a");
     }
 
     public void verifySearchResultsAreSortedByPrice() throws InterruptedException {
@@ -51,5 +53,15 @@ public class SearchResultsPage {
             list.add(Double.valueOf(resultPriceValue + resultPriceSepartorValue + resultPriceFractionValue));
         }
         return list;
+    }
+
+    @Override
+    protected void load() {
+     parent.get().searchItem();
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
     }
 }

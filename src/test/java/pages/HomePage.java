@@ -2,8 +2,13 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.LoadableComponent;
+import utils.PropertyReader;
 
-public class HomePage {
+import static org.testng.AssertJUnit.assertTrue;
+
+public class HomePage extends LoadableComponent<HomePage> {
+
     WebDriver driver;
     SearchResultsPage searchResultsPage;
 
@@ -19,7 +24,19 @@ public class HomePage {
     public SearchResultsPage searchItem() {
         searchTextBox.sendKeys("Kindle");
         submitText.click();
-        return searchResultsPage=new SearchResultsPage(driver);
+        return searchResultsPage;
+    }
+
+    @Override
+    protected void load() {
+     driver.get(new PropertyReader().readProperty("applicationURL"));
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        System.out.println(">>>>>>><<<<<<");
+        assertTrue("HomePage is not loaded!", driver.getCurrentUrl().equals(
+                new PropertyReader().readProperty("applicationURL")));
     }
 }
 
