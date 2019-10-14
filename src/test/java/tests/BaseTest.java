@@ -10,7 +10,7 @@ import utils.PropertyReader;
 public class BaseTest {
 
     private static WebDriver driver;
-    static HomePage homePage;
+    protected static HomePage homePage;
 
     @BeforeMethod(alwaysRun = true)
     public void setup(){
