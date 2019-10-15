@@ -15,8 +15,8 @@ repositories {
 task SanityTests(type: Test) {
     dependsOn clean, compileTestJava
     useTestNG {
-        includeGroups 'Sanity_GoEuro'
-        outputDirectory = file("$buildDir/GE_SanityTestsResults")
+        includeGroups 'Sanity_Tests'
+        outputDirectory = file("$buildDir/SanityTestsResults")
         parallel = "classes"
         threadCount = 10
         useDefaultListeners = false

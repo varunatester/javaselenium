@@ -7,17 +7,14 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import static org.testng.Assert.assertEquals;
 
 public class SearchResultsPage extends LoadableComponent<SearchResultsPage> {
-    WebDriver driver;
-    LoadableComponent<HomePage> parent;
+    private WebDriver driver;
+    private LoadableComponent<HomePage> parent;
 
-    public SearchResultsPage(WebDriver driver, LoadableComponent<HomePage> parent) {
+    SearchResultsPage(WebDriver driver, LoadableComponent<HomePage> parent) {
         this.driver = driver;
         this.parent = parent;
     }
-
-
-    public void verifySearchResultsSortByFeature() throws InterruptedException {
-        System.out.println(">>>>>>>><<<<<<<<<");
+    public void verifySearchResultsSortByFeature() {
         assertEquals(driver.findElement(
                 By.cssSelector("span#a-autoid-0-announce > span.a-dropdown-prompt")).getText(),
                 "Featured");
