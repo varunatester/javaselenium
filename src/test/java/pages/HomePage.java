@@ -1,4 +1,5 @@
 package pages;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,8 @@ import static org.testng.AssertJUnit.assertTrue;
 public class HomePage extends LoadableComponent<HomePage> {
 
     WebDriver driver;
-
+    private By searchTextBoxBefore=By.id("twotabsearchtextbox");
+    private By submitTextBefore=By.className("nav-input");
     @FindBy(id = "twotabsearchtextbox")
     private WebElement searchTextBox;
 
@@ -19,6 +21,11 @@ public class HomePage extends LoadableComponent<HomePage> {
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+    }
+    public SearchResultsPage searchItemBPF() {
+        driver.findElement(searchTextBoxBefore).sendKeys("Kindle");
+        driver.findElement(submitTextBefore).click();
+        return new SearchResultsPage(driver, this);
     }
     public SearchResultsPage searchItem() {
         searchTextBox.sendKeys("Kindle");
