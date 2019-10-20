@@ -1,4 +1,4 @@
-package tests.creationalDesignPattern;
+package tests.structuralDesignPattern;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
